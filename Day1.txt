@@ -1,0 +1,528 @@
+
+
+
+		Java Programming Language
+
+				- With Vishhal
+
+
+	its not a "common environment" - offline - classroom
+
+	unique environment - online - your home
+
+		1 to 50 - 50 homes - RHK 1 bhk 2 bhk 3 bhk 
+	A proper internet connection / Plan B/ Plan C
+			1. wired connection  / wifi / mobile 
+				40 mbps 
+
+	Mic is on - your mic is off
+
+	10.00  to 6.00
+
+	10:00 to 11:15 - First Session
+
+	11:15 to 11:30 - 		First Break
+
+	11:30 to 13:00 - Second Session
+
+	13:00 to 13:45 - 		Second Break - lunch 
+
+	13:45 to 16:15 - Third Session
+
+	16:15 to 16:30 - 		Third break
+
+	16:30 to 18:00 - Fourth Session
+
+	1. Rating on Java 
+		1 to 10 
+		low   high
+
+	2. Background - mtech btech be EE IT civil
+
+	3. Expectations
+
+	excel sheet 
+	 10 parameters
+
+			punctuality	attentiveness	responseto queries 	class  thoery practical ......
+	1. SAchin	10		3
+	2. Sameer	8		10		
+					10		0
+
+	
+	Day 1
+	-------------
+	Introduction to Java Programming
+	First Java program
+	Features of Java 
+	OOPS concepts
+		- Association aspects - isA, hasA, usesA, produces
+	
+	
+
+	
+
+	Day 20
+	-------------
+
+awaiting d 1 Anand Cdac -5 - Yawatmal
+pending d 2 Akash M - Cdac - 6	- Solapur
+done  3 Sahana - J2ee course - 7 - excpetion handling - karnataka
+done d 4 Vishal2 - C++ / why multiple inheritance / operator overloading 6.5
+done d 5 atlan jose - EE - Coimbatore - Tamilnadu - 6
+done d 6 sujitha - telangana - CS - 6 - threading - sync - 
+laptop d 7 sowjanya - EE - 5 - threading - collection - AP
+pending d 8 akshay - 6 - nanded
+done d 9 sagar - nagpur - cdac - 6 - threading - collections
+done d 10 nikitha - AP - CS - btech - 5 - "python - html - css done " - Threading - collection
+done d 11 karthik - Btech EE - core java done -  6 - reflection API - AP
+done d 12 Aditi - solapur - CSE - 5 - 
+done d 13 gaurav - MP - cdac - 6 - menchanical - multithreading - exception handling
+done d 14 sunidhi - mp - bhopal - EE - cdac - 5 - 
+done 15 Kavya - btech IIIT - CS - mtech - data science - 6 - Hyderabad - hands on 
+pending   16 Venkata - CS - AP - 5 
+done d 17 Kala - Tamilnadu - MCA - 5 
+done d 18 Akash Patil - CDAC - EE - 6 - Nagpur 
+pending d 19 Saurabh - MCA - cdac - 6 collections - generics - autoboxing - UP
+pending d 20 Sajag - EE - cdac - collection - thread - 6 - MP
+
+
+
+
+
+
+
+
+
+
+		the word "water" is not the actual water
+
+
+			    self
+			     | assignments/ case study / project
+			     |
+		Knowledge - apply - Wisdom
+		|			|blood and gut - u felt it 
+		read			self experience
+		learn
+		see
+		hear
+
+10,000 - 55 MCS - C ++, JAVA full stack - Oracle - Unix Shell 
+				scripting
+
+		physical mental emotional spritual
+		|	 |	|	  |
+		1	 2	3	  4
+
+
+	KNOWLEDGE + VISION + LEARNING ATTITUDE
+
+			Java Technology  5+ 
+				|
+	------------------------------------------------------
+		|		|		|
+		JSE		JEE		JME
+		desktop		internet	mobile
+		|		|RC|HA|MT|POOL|CACHE|TM|
+	Core Java		------------------------------
+				|			| FlightEnquiry
+language fundamentals		|			| FlightTicket
+oops concepts			WEB			E->Java Beans
+ isA hasA usesA producesA	|			| "Class"
+packages			Servlets	-----------------
+exceptions			JSP		|	|	|
+threading			Struts		Session	Entity	Message
+generics			|		  |	  |	    |
+Collections	Angular at client side	-------------	--------   -------
+file i/o	ReactJS at client side	|	|	 |     |   |    |
+jdbc				    Stateless Stateful   BMP  CMP SMS   MAIL
+|			   BEFORE REGISTER  AFTER LOGIN  jdbc orm phone gmail
+Advanced Java	 airindia  ------guest  - registered - purchase ticket
+|		 bookmyshow 
+Socket programming
+Networking - java.net
+RMI
+	
+
+"Enterprise application server" will offer all these 7 features	
+		| write your code = e + your code
+	--------------------
+	|
+
+	Any shopkeeper - main board - Ramesh Enterprise h/w store
+				7 am to 11 am
+
+		Sunidhi enterprises
+
+	Enterprise Edition 
+
+
+ 7 features of an application - which makes it as an enterprise application
+
+	<----------cluster node-------->
+Bank's [Server1|Server2|Server3|Server4] Machine - Bank Application
+				| 
+	-----------------------------------------------
+		|	|	|	|	|	
+[clients]-->	PC	ATM	Visa	Phone	SmartPhone
+		|	|	|	|	  |	
+		IE	cash	cc/dc	IVR/sms	 android app
+		Chrome			
+		NN		
+		Safari
+		Mozilaa
+
+
+1. Remote capability - why first feature is the first feature??
+	- socket programming
+	- Socket sock1 = new Socket(IP1,port1); <-- machine1
+				     |
+	- Socket sock2 = new Socket(IP2,port2); <-- machine2
+
+	
+	
+2. High Availability - 24 X 7  366 days 
+	- clustering - heart beating algorithm 
+
+
+3. Multithreading / Multi processing 
+
+	CPU1
+	|
+	Thread t1 = new Thread();	t1.start();
+	Thread t2 = new Thread();	t2.start();
+	Thread t3 = new Thread();	t3.start();
+
+4. Pooling of resources - before sign up (register)
+	POOL - common set of resources 
+
+		paper cups for the tea - in a set 
+		Tea vending machine - paper cups IN THE POOL
+
+5. Caching of resources - after signup - go for sign in (login)
+	CACHE - PK - u are with your "own paper cup" with a Tea/coffee
+		PK - he is with his "own paper cup" with a Tea/coffee
+		PK - she is with her "own paper cup" with a Tea/coffee
+
+		table - enjoying coffee/tea
+
+6. Transaction management - Atomicity Consistent Isolation Durable
+
+		icicibank.com
+		|
+		sign-in ( login with your internet userid /password)
+	-----------------------
+	|
+	DASHBOARD - 50000 -> 45000  --- rollback and commit
+	|
+	Transfer
+	|
+	select the payee - Seema / or add Seema as a payee
+	|
+	fundTransfer - from your account to Seema's account
+	|					30000 -> 35000
+	5000
+	|
+	asking for OTP - over phone/email - 180 seconds
+	|
+	5000 debited from your account - 
+	|
+	sms saying the debit - and credited to Seema's account
+
+	50000			30000
+	|			|
+	db			db
+	|select			|select
+	|update			|update
+	|select			|select
+	ICICI			HDFC
+	|			|
+	SOWJANYA		SEEMA
+	|			|
+	5000	----------->
+	|			|
+	45000			33000
+
+
+	Akash			Sachin
+	Samir			SEEMA
+	3000
+
+
+	
+7. Security management - https - TLS - otp - bio metric scanning
+
+
+	
+
+
+
+	metaphyscail - logical - rational 
+
+	<-----enterprise---->
+	RC HA MT PR CR TM SM  - coca cola  vs  sugar cane juice
+						18 amino acids 
+
+
+first.cpp <-- a c++ code may be with/without a class definition
+---------------
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout<<"\hello";
+  return 0;
+}
+------------------------------
+<-- a c++ code may be with a class definition
+second.cpp -> compile -> second.obj/o -> link -> second.out/.exe
+---------------
+#include <iostream>
+using namespace std;
+class BankAccount
+{
+	private: float balance;
+
+	public:	
+	void withdraw(float amt) {
+		balance = balance - amt;
+	}
+};
+int main()
+{
+  cout<<"\hello";
+  SavingsAccount a;   a.withdraw(5000);
+  return 0;
+}
+---------------------------------------	
+MINIMUM UNIT OF CODING IN JAVA IS TO "WRITE A CLASS"
+<-- the name of the source code 
+First.java --> compilation -> 
+		Greet.class|SavingsAccount.class|FlightTicket.class
+		|
+		run -> run the one which has the "main" method
+------------------------------------
+class Greet  // a non-public class may be saved in any source code
+{
+	public static void main(String args[])
+	{
+		System.out.println("Hello Again Java...greeting....");
+	}
+}
+class SavingsAccount { 
+	public static void main(String args[])
+	{
+		System.out.println("Hello Again Java..banking...");
+	}
+}
+class FlightTicket { 
+	public static void main(String args[])
+	{
+		System.out.println("Hello Again Java..airline...");
+	}
+}
+------------------------------------------
+
+
+WINDOWS       -> set path="c:\Program Files\Java\jdk-16\bin";%path%
+linux /ubuntu -> export PATH=/....JAVA JDK PATH... :$PATH
+
+
+OOPS concepts
+================
+	procedure/function <=== data
+	Procedure Oriented Programming System = POPS
+	top to bottom approach	
+
+
+	Object Oriented Programming System = OOPS
+	botton to top approach
+
+	data <=== procedure / function
+
+	saloon <-- ask the barber - hair cut / eye brow
+
+
+	before class there was structure's concept
+
+	CONTRACT OF A CLASS = ASSOCIATION OF DATA<--WITH FUNCTIONS
+	class Employee
+	{
+		char empName[20];
+		char desg[20];
+		float salary;
+			+
+		void showEmployee() { } // READ ONLY CONTRACT
+		void changeSalary(float newSalary)
+		{
+			if(newSalary > (salary+salary*0.20) )
+				salary = newSalary; // mutation
+			else 
+				cout<<"\nsalary cannot be lesser than the current one";
+		}
+	}
+	class Song
+	{
+		char songTitle[20];
+		char songArtist[20];
+		int year;
+		void showSong() { }
+	}
+	main() 
+	{
+		Employee e={"John","Developer",5000};		
+		Song     s={"My Heart Will Go On","Celine D",1996};
+		s.songTitle = e.empName;
+	}
+
+
+	why to write a class????
+
+
+
+
+	Object = physical state + behaviour(functionality)
+SavingsAccount =  balance + withdraw() / deposit() / transfer()
+
+	OOPS
+
+	What is your father??
+	REPLY1 : my father is in police! -> FIR/introspection
+	REPLY2 : my father is in bank as cashier!!! fundtransfer/dispense cash
+	REPLY3 : My father is a doctor - diagnose patient
+
+
+	String str="john";
+	str.toUpperCase();
+
+	1. Abstraction
+		it is the "WHAT IS?" part of an object
+		it hides the complexity of an object
+
+   	     what is an ATM? - End user - knows to withdraw the cash
+
+		- data abstraction - hiding the data
+			private data
+
+		- procedural abstraction = hiding the function
+			recordLog() { } - card in/card out log time
+			private functions
+
+		- class abstraction
+			private nested class 
+	
+	2. Enpcasulation
+		it is the "HOW IS IT?" part of an object
+		it is the complexity(coding) of an object
+
+	     How is it(working) an ATM? <-- the ATM Engineer knows it
+
+		data encapsulation - private data
+		procedure encapsulation - private functions
+		class encapsulation - private nested classes
+
+	class FlightTicket {
+		data
+		+
+		function
+	}
+
+	class FlightEnquiry {
+
+	}
+
+	3. Polymorphism
+		Ability of a business entity to have multiple forms
+
+		
+		i. class extension
+
+			   BankAccount
+				|
+		-----------------------------------------------
+		|			|		|
+		SavingsAccount	CurrentAccount	CreditAccount
+		|
+		FixedDepositAccount
+
+				Doctor - every doctor is not a surgeon
+				|
+		------------------------------------
+			|
+			Surgeon - every surgeon is a doctor
+			|
+	----------------------------------
+	|		|		|
+	HeartSurgeon	NeuroSurgeon	OrthoSurgeon
+
+- every heartsurgeon is a surgeon as well as doctor
+
+
+
+
+		ii. function overloading - compile time decision
+
+			ability of a function to be redefined 
+			in the same class or across the hierarchy
+			provided the following condition are met
+
+			a. type of parameter
+			b. number of parameters
+			c. sequence of parameters
+
+		iii. operator overloading
+
+		iv. function overiding
+		 
+
+
+	4. Inheritance
+
+	5. Object communication
+
+
+
+
+	Java methods are of four category
+
+	1. exclusive
+	2. inherited
+	3. inherited-hence-overidden
+	4. implemented - mandate from abstract classes/interfaces
+
+
+
+
+		Doctor
+                   ^
+                  /|\
+		   | 
+		   |
+		   |
+		Surgeon
+
+
+-------------------------------
+
+Assignment1 : innovate overloading to the extent of 7 plus methods
+Assignment2 : innovate the class hierarchy like Doctor
+		till 3 levels
+
+				Person
+				|
+		----------------------------
+		|		|	|	|
+		Student		..	..	..
+		|
+		Employee	
+		|
+		Executive
+		|
+		Manager
+
+
+
+
+
+
