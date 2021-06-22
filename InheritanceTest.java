@@ -11,8 +11,8 @@ abstract class BankAccount // super parent for common data+methods
 	private String accountHolderName;
 	protected double accountBalance; // can be referred by the child too
 	
-	abstract void withdraw(double amountToWithdraw); //mandate to the child
-	abstract void deposit(double amountToDeposit); //mandate to the child
+	//abstract void withdraw(double amountToWithdraw); //mandate to the child
+	//abstract void deposit(double amountToDeposit); //mandate to the child
 	
     BankAccount() { //user defined explicit no-arg ctor | NOT A DEFAULT ONE
 		System.out.println("BankAccount ctor....");
@@ -32,18 +32,30 @@ abstract class BankAccount // super parent for common data+methods
     	System.out.println("----------------------------------");
     }
 }
-class SavingsAccount extends BankAccount 
+interface WithdrawService
+{
+	double getBalance();
+	void withdraw(double amt);
+}
+interface DepositService
+{
+	void deposit(double amt);
+}
+class SavingsAccount extends BankAccount implements WithdrawService, DepositService 
 {
 	float rateOfInterest; //4th data member + inherited 3 fields 
-	void deposit(double amountToDeposit) //mandate to define here
+	public void deposit(double amountToDeposit) //mandate to define here
 	{
 		System.out.println("Depositing..."+amountToDeposit);
 		accountBalance = accountBalance + amountToDeposit;
 	}
-	void withdraw(double amountToWithdraw) //mandate to define here
+	public void withdraw(double amountToWithdraw) //mandate to define here
 	{
 		System.out.println("Withdrawing..."+amountToWithdraw);
 		accountBalance = accountBalance - amountToWithdraw;
+	}
+	public double getBalance() {
+		return accountBalance;
 	}
 	
 	SavingsAccount(float rate) {
