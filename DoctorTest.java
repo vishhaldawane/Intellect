@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-class Doctor //does not know who the child is!!!!!
+class Doctor1 //does not know who the child is!!!!!
 {
 	void diagnose() { //1. exclusive method
 		System.out.println("Doctor: Diagnosing...");
 	}
 }
-class Surgeon extends Doctor //child knows who the parent is!!
+class Surgeon1 extends Doctor1 //child knows who the parent is!!
 {
 	void diagnose() { //2. it is inherited+overridden method
 		System.out.println("Surgeon: Diagnosing...");
@@ -16,7 +16,7 @@ class Surgeon extends Doctor //child knows who the parent is!!
 	}
 }
 //4. implemented method ( will see at interface time)
-class HeartSurgeon extends Surgeon
+class HeartSurgeon1 extends Surgeon1
 {
 	//3. the doSurgery() is inherited here + u may override it
 	
@@ -32,33 +32,33 @@ class Patient {
 }
 class Hospital
 {
-	static Doctor getDoctor() {
+	static Doctor1 getDoctor() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Select Choice of Doctor");
 		System.out.println("1. Doctor | Savings");
 		System.out.println("2. Surgeon | Current");
 		System.out.println("3. HeartSurgeon | Credit");
 		int choice = scan.nextInt();
-		Doctor d = null;
+		Doctor1 d = null;
 		switch(choice) {
-			case 1: d = new Doctor(); break;  
-			case 2: d = new Surgeon(); break;
-			case 3: d = new HeartSurgeon(); break;
+			case 1: d = new Doctor1(); break;  
+			case 2: d = new Surgeon1(); break;
+			case 3: d = new HeartSurgeon1(); break;
 		}
 		return d;
-	}
+	} 
 }
 public class DoctorTest {
 	public static void main(String[] args) {
-		Doctor d = Hospital.getDoctor(); //Doctor is hidden here
-		
-		if(d instanceof HeartSurgeon) { //typeof in C++ - RTTI
+		Doctor1 d = Hospital.getDoctor(); //Doctor is hidden here
+	 	
+		if(d instanceof HeartSurgeon1) { //typeof in C++ - RTTI
 			System.out.println("d is pointing at HeartSurgeon");
 		}
-		else if(d instanceof Surgeon) { //typeof in C++ - RTTI
+		else if(d instanceof Surgeon1) { //typeof in C++ - RTTI
 			System.out.println("d is pointing at Surgeon");
 		}
-		else if (d instanceof Doctor) {
+		else if (d instanceof Doctor1) {
 			System.out.println("d is pointing at Doctor");
 		}
 		
