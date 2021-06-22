@@ -471,15 +471,347 @@ SavingsAccount =  balance + withdraw() / deposit() / transfer()
 			b. number of parameters
 			c. sequence of parameters
 
-		iii. operator overloading
+		iii. operator overloading - deprecated - obselete
+			ability of an operator to have multiple task
+
+			Employee e1 (101,"Julie",5000);
+			Employee e2 (102,"Jack",7000);
+			Employee e3 (103,"Jane");
+
+			int i = 10 + 20;
+
+			e3    = e1.operator +(e2); // Objects in math expression 
+			e3    = e1 + e2; // Objects in math expression 
+			f1    = e1 + s1; //abused
+
+			in java, a developer cannot overload the
+			operator to miss its core purpose
+
+			internally java does the overloading of
+			operators
+
+	class Employee
+	{
+		int salary;
+
+		Employee operator +(Employee x)
+		{
+			Employee tempEmp;
+			tempEmp.salary = salary + x.salary;
+			return tempEmp;
+		}
+		int operator +(int x)
+		{
+			int number;
+			number = salary + x;
+			return number;
+		}
+	}
+
+
+	 public static java.lang.String valueOf(int);
+
+			       1    2            3    4
+	System.out.println( 10 + 20 + " and is " + 10 + 20 );
+			    |  | |        |        |   |
+			  int  | int	String   int  int
+			       1
+			binary +
+			       |
+			       2
+			       |
+			    30 + " and is " + 10 + 20 
+			
+			  "30" + "and is " + 10 + 20 
+			       |
+ public java.lang.String concat(java.lang.String);
+			       |
+			 "30 and is " + 10 + 20 
+			 "30 and is " + "10"
+			 "30 and is 10" + 20
+			 "30 and is 10" + "20"
+
+			 "30 and is 1020"
+
+
+
+		f1 can be a flight object, s1 can be a song object
+
+
+
 
 		iv. function overiding
-		 
 
+			- allow the child class to redefine
+			a function with same arguments and 
+			return type(Co-variant)
+
+		class Hospital
+		{
+			Doctor getDoctor() { }
+		}
+		class EyeHospital extends Hospital
+		{
+			Surgeon getDoctor() { } //overridden
+		}
+
+1. exclusive
+2. inherited
+3. overridden (first it is inherited)
+4. implemented (mandate from its super class)
 
 	4. Inheritance
 
+		ability of a business entity to acquire properties
+		from existing business entities
+
+	derivation		 implementation
+	|			 |
+	A concrete		 A - non-concrete | abstract | interface
+	|fun(){..} <-defined	 |fun(); <-- declared | undefined	
+	|			 |
+	B			 B
+	fun(){...}//may override fun(){} must be implemented
+
+		
+		a. single level
+		b. multi level - linear inheritance
+	
+		c. multiple level* obselete ( rather use interfaces)
+		d. hierarchical level
+
+		A
+		| single 
+	-----------
+	|	|
+	D	B
+	|      | |
+        +------+ |
+	|	 | multi-level
+	E	 c
+
+	virtual base(super) classes 
+
+				   LivingBeing
+					|
+	--------------------------------------------------
+			|				|
+			Animal				Trees
+			|breathing();				
+---------------------------------------------------------------------
+   |		|		|			|
+  Fish		Mammal		Bird			Reptile
+  |layEggs()	|giveBirth();	 | |layEggs() | fly()	|
+  |breathing();	|breathing();	 | |breathing(); 	Snake | Lizard
+  |swim() ----------   |	 | ------------------	
+Sword |	  |      |     -------------  		|
+      -----      Elephant    |  |		Sparrow
+        |                    |  Bat*
+      Whale*		Unicorn (Honda Bike)
+ 
+	USE ABOVE REFERENCE TO INNOVATE YOUR OWN EXAMPLE 
+	TO EXPLORE CLASSES/ABSTRACT CLASSES/INTERFACES
+	up to 4 x 4 level extent
+
+
+
+
+		class A
+		{
+		}
+		class B 
+		{
+		}
+
+		class C extends B,A
+		{
+		}
+
+
+	Constructor 
+		- is a special function that has the same name
+		as of its enclosing class
+
+		class A <-- this class has an implicit ctor|default
+		{
+		}
+		class B
+		{
+		  B() { 
+			super(); // to invoke the super class ctor...
+		  } <-- not a default | its an explicit no-arg
+		}
+
+		what the use of the constructor?????
+
+		- to initialize the state of the object
+
+		-it is called only once during the object creation time
+			
+		- once the object is created, it cannot be invoked
+
+		- it can take parameters, hence it can be overloaded
+
+		- it cannot return type | but it can throw exceptions
+
+
+BankAccount bankObj = new BankAccount();
+	|	|	|	 |
+	class	ref  allocator  constructor
+	
+		stack				heap
+		|				|
+			<----------------data members/fields--------->	
+			accountNumber accountHolderName accountBalance
+			----------------------------------------------
+allocator's job	----->	|0	     | null           	|0.0	     |   
+			----------------------------------------------
+	   +------------>32780	
+	   |				MEMBER METHODS
+	   |				-------------------
+	+-------+			BankAccount()
+	|32780	|			showBankAccount()
+	+-------+
+	bankObj <-- just a reference
+
+			<----------------data members/fields--------->	
+				BankAccount			     |  SavingsAccount	
+			accountNumber accountHolderName accountBalance  rateOfInterest
+			---------------------------------------------------------------
+allocator's job	----->	|0	     | null           	|0.0	     |		      |    
+			----------------------------------------------------------------
+	   +------------>32820	
+	   |				MEMBER METHODS : BankAccount
+	   |				-------------------
+	+-------+			BankAccount()
+	|32820	|			showBankAccount()
+	|	|			BankAccount(int,String,double,float)
+	+-------+			
+	sa <-- just a reference		Member methods : SavingsAccount
+					----------------------------
+					SavingsAccount(float) { super(); }
+					SavingsAccount(int,String,double,float) { super(); }
+
+
+
+		 Object -- parent for all
+		   |
+		Person
+		| Person() { super(); }
+		|
+		Student
+		|Student() { super(); }
+		|
+		Employee --> applies for second job
+		|Employee() { super(); }
+		|
+	' ',"Jack","10-Jan-1995" ,"BE",6.8,    "DBA","LTI",5000
+	<----personal---------> <---student---> <--employee-->
+
+
+
+
+
+super() - must be the first line to invoke a ctor from another ctor
+
+super. - can be anywhere to invoke super class member from any member
+
+
+
+
+
+	Inheritance of implementation
+	------------------------------------
+	Abstract classes and Interfaces
+
+	Abstract class
+
+
+		- a class with optional "partial contract "
+		
+		- "partial contract " means abstract method
+
+		- abstract means incomplete - just declared/not defined
+
+	e.g.
+
+	abstract class BankAccount { 
+		abstract void withdraw(double amt);
+		abstract void deposit(double amt);
+	}
+	class SavingsAccount extends BankAccount //immediate child
+	{
+		//hence mandate to develop the above abstract methods
+	}
+	class FixedDepositAccount extends SavingsAccount
+	{
+		//no mandate to develop the grand parent methods
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	5. Object communication
+
+		B b = new B();
+		b.greet();		OR
+		
+		A a = new A();
+		B b = new B();
+
+		a.hi(b); // pass the object 
+
+		b.greet(a);
+
+		class A
+		{
+			void hi(B b) {
+				b.howAreYou();
+			}
+		}
+
+		class B
+		{	
+			void howAreYou() {
+
+			}
+			void greet(A a) {
+				a.hi(this);
+			}
+		}
+
+
+		withdraw() { bal = bal - amt; }
+		|
+ATM server - withdraw()
+|
+ATM client - withdraw() <-- press 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -523,6 +855,244 @@ Assignment2 : innovate the class hierarchy like Doctor
 
 
 
+	Naming convention
+	-------------------------
+
+	ClassName	-	DriverManager - PascalCase
+	methodName	-	speedToTest()   - camelCase
+				setLookAndFeel()
+				setlookandfeel()
+
+	variable names	-	rollNumber
+				empployeeId
+				distanceBetweenTheEarthAndTheSun
+
+	CONSTANTS	-	PI, MAX, MIN, SPEED_OF_LIGHT
+
+	packages	-	java.lang, java.awt,  java.awt.event
 
 
 
+
+			godisnowhere
+
+			GodIsNoWhere
+			GodIsNowHere
+
+
+
+
+
+
+
+
+		
+
+	class Machine
+	{
+		int machineNumber; // unique id 
+		String manufacturer; // creator
+		
+	}
+		          A s s o c i a t i o n
+	class CardReader {
+		void scanIt(Card c) {
+			//doing some physical scanning of card digits
+		}	
+	}
+	class AtmMachine extends Machine //isA
+	{
+		CardReader reader = new CardReader(); // hasA
+
+	 producesA		      usesA    usesA   usesA
+		|		       |	  |	   |	
+		Bill acceptCard(Card crd, double amt, int pin) // using Card object in the argument
+		{
+			reader.scanIt(crd); //hand over the card to scan
+			Bill b = new Bill();
+			return b;
+		}
+	}
+
+	class WashingMachine extends Machine //isA
+	{
+		WashingTub wt = new WashingTub(); //hasA - central/fatal part of this machine
+
+		producesA	<----- usesA   usesA    usesA    usesA --->
+		|		|		|	   |	  |
+		Cloth[] wash(Cloth c[], WashingPowder wp, Water, Electricity e) 
+		{
+			....
+			...
+			rinse();
+			...
+			spin();	
+		}
+		void spin() { }
+		void rinse() {}
+	}
+
+
+
+
+			Machine
+			|
+	-------------------------------------------------
+		|		|		|
+	ATMMachine	   WashingMachine	MicrowaveMachine
+	  CardReader	 	WashingTub		HeatingCoil
+				HeatingCoil
+
+		Rahul Gandhi -> put potato in a machine
+						|
+						gold coin
+
+
+	Quantum formula to "create anything" in this world
+
+
+		invisible			visible
+		unmanifested			manifested
+
+	Thought + eMotions		=  Action + Result
+	|	    |			= 
+	faster	 feel it +/- tive	    coding + result
+	than 
+	light
+	|
+	invisible
+		
+	
+
+	Villager
+	   |
+	---------------------
+	|isA		|isA
+	Farmer		Politician 
+	|		|
+--------+		----------
+|isA				|isA
+PoliticianFarmer		Village X
+
+	class Village
+	{
+		Villager v = new Villager(); //hasA
+		Farmer f[] = new Farmer[10];
+		Politician p1 = new Politician();
+		PoliticianFarmer p2 = new PoliticianFarmer();
+	}
+		
+
+
+	Interfaces
+
+		- is a pure partial contract of a class
+
+		- all methods of it are public abstract
+		
+		- all fields are public static and final
+
+
+		interface Payment
+		{
+			void pay(); // pure partial - abstract,public
+		}
+
+	class GooglePayment implements Payment
+	{
+		void pay() {
+			
+		}
+	}
+	class CardPayment implements Payment
+	{
+		void pay() {
+			
+		}
+	}
+	class ChequePayment implements Payment
+	{
+		void pay() {
+			
+		}
+	}
+	class CashPayment implements Payment
+	{
+		void pay() {
+			
+		}
+	}
+
+
+	
+			BankAccount
+			|concrete class
+	---------------------------------
+	|
+	|
+	|extends
+----------------+  WithdrawService | pure abstract | interface
+		|  | withdraw(float);
+		|  | implements
+		|  |
+		|  | DepositService | pure abstract | interface
+		|  | |deposit(float);
+		|  | |implements
+		|  | |
+	  SavingsAccount
+
+
+
+
+
+	is "Sachin Tendulkar" an object or a class?
+
+	class Player { }
+
+	class Cricketer extends Player //isA
+	{
+		String batsmanName;
+	
+		Cricketer(String name) {
+			batsmanName=name;
+		}
+	}
+	
+	Cricketer cr1 = new Cricketer("Sachin Tendulkar");
+	Cricketer cr2 = new Cricketer("Virat");
+	Cricketer cr3 = new Cricketer("Dhoni");
+
+				
+	class SachinTendulakar
+	{
+		int age;
+		long score;
+		String address;		
+	}
+	SachinTendulakar s1 = new SachinTendulakar(40,12000,"Mumbai");
+	SachinTendulakar s2 = new SachinTendulakar(30,2000,"Delhi");
+
+
+
+	class Car
+	{
+
+
+	}
+	class SedanCar extends Car
+	{
+		String modelName;
+
+	}
+	class Maruthi { }
+	class Honda { }
+
+
+	SedanCar c1 = new SedanCar("Maruthi");
+	SedanCar c2 = new SedanCar("Honda");
+	SedanCar c3 = new SedanCar("Skoda");
+
+
+	Honda h1 = new Honda("Civic");
+	Honda h2 = new Honda("City");
+	Honda h3 = new Honda("Swift");
