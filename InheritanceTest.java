@@ -1,9 +1,18 @@
-class BankAccount
+//if u goto an ATM - u wont find any BankAccount, rather
+//				common data ie  acno, name, balance
+
+// what is found -> Savings, Current   or   Credit
+//				    rate      overdraft		credit/cash limit
+
+abstract class BankAccount // super parent for common data+methods
 {
 	// implicit no-arg ctor | default ctor provided unless u write
 	private int accountNumber;
 	private String accountHolderName;
-	private double accountBalance;
+	protected double accountBalance; // can be referred by the child too
+	
+	abstract void withdraw(double amountToWithdraw); //mandate to the child
+	abstract void deposit(double amountToDeposit); //mandate to the child
 	
     BankAccount() { //user defined explicit no-arg ctor | NOT A DEFAULT ONE
 		System.out.println("BankAccount ctor....");
@@ -26,6 +35,16 @@ class BankAccount
 class SavingsAccount extends BankAccount 
 {
 	float rateOfInterest; //4th data member + inherited 3 fields 
+	void deposit(double amountToDeposit) //mandate to define here
+	{
+		System.out.println("Depositing..."+amountToDeposit);
+		accountBalance = accountBalance + amountToDeposit;
+	}
+	void withdraw(double amountToWithdraw) //mandate to define here
+	{
+		System.out.println("Withdrawing..."+amountToWithdraw);
+		accountBalance = accountBalance - amountToWithdraw;
+	}
 	
 	SavingsAccount(float rate) {
 		super(); //default first line
@@ -52,6 +71,7 @@ class FixedDepositAccount extends SavingsAccount
 	
 	FixedDepositAccount(int num, String holder, double bal, float rate, int year) {
 		super(num,holder,bal,rate);
+		System.out.println("FixedDepositAccount(int,String,double,float,int)....");
 		maturityYear = year;
 	}
 	void showBankAccount() { //ACCESSOR METHOD
@@ -63,17 +83,23 @@ class FixedDepositAccount extends SavingsAccount
 public class InheritanceTest {
 	public static void main(String[] args) {
 		
-		BankAccount bankObj = new BankAccount(101, "Julie", 50000);
-		bankObj.showBankAccount();	
+	//	BankAccount bankObj = new BankAccount(101, "Julie", 50000);
+	//	bankObj.showBankAccount();	
 		
-		System.out.println("===============");
+	//	System.out.println("===============");
 		
 		SavingsAccount sa = new SavingsAccount(102,"Smith",60000,3.5f);
+		sa.showBankAccount();
+		sa.withdraw(4000);
+		sa.showBankAccount();
+		sa.deposit(80000);
 		sa.showBankAccount();
 		
 		System.out.println("===============");
 		
 		FixedDepositAccount fd = new FixedDepositAccount(103, "Peter", 70000, 4.5f, 2025);
+		fd.showBankAccount();
+		fd.deposit(30000);
 		fd.showBankAccount();
 		
 	}
