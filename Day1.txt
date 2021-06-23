@@ -439,12 +439,23 @@ SavingsAccount =  balance + withdraw() / deposit() / transfer()
 		i. class extension
 
 			   BankAccount
-				|
+				| withdraw() { bal = bal - amt; }
+				| void print(){ ano name bal}
 		-----------------------------------------------
 		|			|		|
 		SavingsAccount	CurrentAccount	CreditAccount
 		|
+		|withdraw() { check min bal and then bal = bal - amt; }
+		|void print(){ ano name bal rate}
+		|
 		FixedDepositAccount
+		|withdraw() { check maturity year and then bal = bal - amt; }
+		|void print(){ ano name bal rate maturity }
+		|
+		FlexiFixedDepositAccount
+		void print(){ ano name bal rate maturity flexiTerm}
+
+
 
 				Doctor - every doctor is not a surgeon
 				|
@@ -895,6 +906,7 @@ Assignment2 : innovate the class hierarchy like Doctor
 		
 	}
 		          A s s o c i a t i o n
+
 	class CardReader {
 		void scanIt(Card c) {
 			//doing some physical scanning of card digits
@@ -954,6 +966,7 @@ Assignment2 : innovate the class hierarchy like Doctor
 		invisible			visible
 		unmanifested			manifested
 
+		frequency 		= frequency 
 	Thought + eMotions		=  Action + Result
 	|	    |			= 
 	faster	 feel it +/- tive	    coding + result
@@ -1073,10 +1086,55 @@ PoliticianFarmer		Village X
 	SachinTendulakar s2 = new SachinTendulakar(30,2000,"Delhi");
 
 
+when you have partial knowledge/hint -> abstract
 
-	class Car
+our mother Earth is also a vehile - 1 miles per hour
+
+	interface Vehicle -> think of opposite of vehicle
 	{
+		move();
+	}
+	abstract class FlyingVehicle extends Vehicle
+	{
+		flyInTheSky();
+	}
+	abstract class LandVehicle extends Vehicle
+	{
+		moveOnRoad();
+	}
+station1			station2
+    |				|
+land|ropeway 			|land
+    +===========================+ earthen wires | in the sky attached
+		|
+	    cart/trolley
+		sky| land    
 
+class Cart extends LandVehicle		class Bicycle extends LandVehicle {
+{
+
+}					}
+
+Paalaki
+
+class Car 		class MotorBike extends Bicycle
+			{
+	
+			}
+
+	abstract class RailVehicle extends LandVehicle
+	{
+		moveOnRailTrack();
+	}
+
+	abstract class SeaVehicle extends Vehicle
+	{
+		moveOnOcean();
+	}
+
+	class Car	it is not truck | flight | train | ship | boat
+	{
+		drive();
 
 	}
 	class SedanCar extends Car
@@ -1096,3 +1154,463 @@ PoliticianFarmer		Village X
 	Honda h1 = new Honda("Civic");
 	Honda h2 = new Honda("City");
 	Honda h3 = new Honda("Swift");
+
+(collection of abstract classes and interfaces )
+Framework = semi-developed application
+
+
+Implementation of the Framework
+
+Guitar	Violin	Veena  Flute  BAgPiper Trumpet Tabla  Dholak  Duff		Cutter Needle		ECGmachine	GlucoMeter ....
+										cut();  poke()	   measureHeartBeats();	 readSugarLevel()		
+
+
+
+
+
+
+
+
+
+
+
+
+					1			    Instrument	<-- interface	
+									| use();
+					-----------------------------------------------------------------------
+					|								|
+			2	MusicalInstument						MedicalInstument			Wooden....	Electrical....	......
+					| playMusic();							|operate();
+	------------------------------------------------------------------			----------------------------------------
+	|				|				|			|				|		
+3 StringBasedMusicalInstrument	AirBasedMusicalInstrument	DrumBasedMusicalInstument	SurgicalMedicalInstrument	PathologicalMedicalInstruments
+	|tuneStrings();			|				|			   |steralize()			|reader()
+-----------------------		------------------------	------------------------	----------------	---------------------------
+|	|	|		|	|	|		|	|	|		|	|		|		|
+Guitar	Violin	Veena ...	Flute  BAgPiper Trumpet ...	Tabla  Dholak  Duff		Cutter Needle		ECGmachine	GlucoMeter ....
+												cut();  poke()	   measureHeartBeats();	 readSugarLevel()		
+
+
+
+
+
+
+	============================================================
+			field		method		class
+	============================================================
+
+	final		CONSTANT	cannot be	cannot be
+					overridden	extended
+
+	------------------------------------------------------------
+
+	static		shared		to refer the	can be the 
+			data across	other static	nested class
+			the instances	members
+
+	------------------------------------------------------------
+
+	abstract	NA		partial		contains
+					contract	partial
+							contract
+	------------------------------------------------------------
+
+
+
+				------------------
+				|radius	| PI	|
+				------------------
+				|45.89	|3.14	|
+				-----------------
+	----------------------->100
+	|			
+	100
+	|	
+	c1
+
+
+				------------------
+				|radius	| PI	|
+				------------------
+				|35.19	|3.14	|
+				-----------------
+	----------------------->200
+	|			
+	200
+	|	
+	c2
+
+				------------------
+				|radius	| PI	|
+				------------------
+				|15.39	|3.14	|
+				-----------------
+	----------------------->300
+	|			
+	300
+	|	
+	c3
+
+=================== after PI as static ===================
+	
+
+				PI <-- static (shared)
+				-------
+				|3.14 | final <-- read only
+				-------
+
+				---------
+				|radius	|
+				---------
+				|45.89	|
+				---------
+	----------------------->100
+	|			
+	100
+	|	
+	c1
+
+
+				---------
+				|radius	| 
+				---------
+				|35.19	|
+				---------
+	----------------------->200
+	|			
+	200
+	|	
+	c2
+
+				---------
+				|radius	| 
+				---------
+				|15.39	|
+				---------
+	----------------------->300
+	|			
+	300
+	|	
+	c3
+
+
+----------------------but in which scenario we want final data
+		to repeat with every object ??? ------
+
+------------------
+
+	
+				---------------------
+				|carModel| NumPlate |
+				---------------------
+				|Maruthi |TN-01-6363|<-- constant
+				---------------------
+	----------------------->100
+	|			
+	100
+	|	
+	c1
+
+
+				---------------------
+				|carModel| NumPlate |
+				---------------------
+				|Honda   |UP-02-1515|<--constant
+				---------------------
+	----------------------->200
+	|			
+	200
+	|	
+	c2
+
+
+				---------------------
+				|carModel| NumPlate |
+				---------------------
+				|Honda   |MH-02-9393|<--constant
+				---------------------
+	----------------------->300
+	|			
+	300
+	|	
+	c3
+				
+
+
+
+
+
+
+		Object class as a Parent to all the classes
+		|
+		11 method
+		|
+	every java developer must know these methods
+
+	1. equals() - to compare objects for equality
+	2. hashCode() - hash code of the object
+
+	3. toString() - object as string
+
+	4. clone() - cloning
+	5. getClass() - relfection - final
+
+	6. wait() - interthread communication - final
+	7. wait() - interthread communication - final
+	8. wait() - interthread communication - final
+	9. notify() - interthread communication - final
+	10. notifyAll() - interthread communication - final
+
+	11. finalize() - gc 
+
+-------------------------------------------------------------------
+
+
+
+	Packages
+
+		= similar to operating system directories/folders
+
+
+		WINDOWS			UNIX/LINUX
+
+1		MyComputer		/
+		|			|
+	--------------------	----------------	
+2	|		|	|
+	C:		D:	home
+	|		|	|
+3	vishal		jack	vishal <--- packages / folders
+	|		|	|
+	net		sql	gui <-- sub packages / folders
+
+c:\vishal\net  c:\jack\sql    /home/vishal/gui
+
+   vishal.net	jack.sql    vishal.gui  . is the separator
+
+
+package must be the first line of any source code
+
+
+
+			d:\
+			|
+		---------------------
+		|
+		javatraining1
+		|
+		PackageProject
+		|
+		jungle
+		|
+	---------------------------
+	|	|	|	
+	cave	tree	river
+	|	|	|
+	Tiger	Bird	Crocodile
+
+			
+
+	There are four access specifiers
+
+
+		1.        <--- blank means default/friendly/accessible
+				only within its own folder/package
+
+		2. private <-- only within its scope { }, 
+				ie within its own class
+
+		3. protected <-- within its own package to nonsubclass
+
+			     <-- can be referred by its child class
+				 via extends gateway 
+
+			<-- not available to the child class via
+				its super class handle
+								
+
+		4. public <-- available to the internet/everybody
+
+
+
+
+
+
+
+
+
+
+	Banking Project
+
+		a. Register with the bank
+		b. as a user  - Apply for Account opening
+
+		c. Admin will approve your account
+
+		d. You get userid, password (mailed)
+
+		e. log in 
+		
+		g. u see ur dashboard
+
+	Account summary		Transfer		Statement	
+		|		|			|
+	ur balance is seen	see the payeelist	monthly
+				|			quarterly
+			select one of the payee		Yearly
+			and transfer funds to		stipulated period
+			that payee
+
+
+
+
+	1. database tables are involved
+		account <---table
+		acno 	name 	balance
+		101	Jack	50000
+
+
+	2. java classes to represent your tables are involved
+		Account <--class
+
+	3. AccountRepo <-- DAO <-- Data access Object
+		|
+		insertAccount(..) -> insert query fired to account table
+		updateAccount(..)-> update query....
+		deleteAccount(..)
+		viewAccount() -> select query
+
+	4. AccountService <-- will invoke DAO
+		openBankAccount() { .... insertAccount(..) ... }
+		changeBalance() { .... updateAccount(..) ... }
+		findBalance() { ..viewAccount().... }
+
+	5. Spring Controller Code
+		AccountService 
+
+	6. HTML CSS + JS 
+
+	html pages... ( 8 to 9 pages + css for decoration)
+		js for validation 
+
+
+
+
+
+
+
+
+
+============================================================
+
+Layer 1 : DB layer - all project tables are here
+--------
+    create table bankaccount		user |  payee | 
+    (
+      acno number primary key,
+      acholder varchar2(20),
+      acbalance number
+    );
+
+	insert into bankaccount(101,"jack",50000);
+
+
+Layer 2 : POJO - Plain Old Java Object - such few pojos
+----------
+	class Account 
+	{
+		int accountNumber;
+		String accountHolderName;
+		float accountBalance;
+		Account(int a, String n, float b) {
+			accountNumber = a;
+			accountHolderName=n;
+			accountBalance = b;
+		}
+	}
+
+Layer 3 : DAO - Data access Object - abstraction to JDBC code
+---------
+	interface AccountRepo
+	{
+		void addAccount(Account a);
+		Account viewAccount(int acno);
+		void updateAccount(Account a);
+	}
+	class AccountRepoImpl implements AccountRepo
+	{
+		void addAccount(Account a) {
+			actual jdbc code to insert a into the table
+		 }
+		Account viewAccount(int acno) { 
+			actual jdbc code to select acno from the table
+		}
+		void updateAccount(Account a) { 
+			actual jdbc code to update the table for a
+		}
+
+	}
+------------------------------------------
+Layer 4 : business SERVICE layer
+
+	interface AccountService
+	{
+		void findAccountService(int acno);
+		void updateAccountBalance(int acno, float bal);
+	}
+	class AccountServiceImpl implements AccountService
+	{
+		AccountRepoImpl  accRepo = new AccountRepoImpl();
+
+		void findAccountService(int acno) { 
+			...some logic....
+			accRepo.viewAccount(acno); //CONNECTING TO LAYER 3 
+			...some logic....
+		}
+		void updateAccountBalance(int acno, float bal)
+		{
+
+		}
+	}
+
+Layer 5 : Controller layer
+---------------------------------
+
+	class MyServlet
+	{
+		AccountServiceImpl accService = new AccountServiceImpl();
+
+		@RequestMapping("/find")
+		void findAccount(int acno)
+		{
+			accService.findAccountService(acno);
+		}
+	}
+-------------------------------------
+Layer 6
+	HTML page
+	<form action="/find">
+		Enter your acno <input type=text name=acno>
+		<input type=submit name=submit>
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
