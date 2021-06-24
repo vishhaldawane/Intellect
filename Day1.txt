@@ -1595,6 +1595,401 @@ Layer 6
 	</form>
 
 
+======================================
+Day 4
+
+
+	
+	Exception handling
+
+
+			Errors
+			|
+	-----------------------------------------------------
+	|	   |	   | 		|	 | 
+	compile  linker   runtime	fatal	logical
+	|	 |	  |		 |	  |developer
+	syntax library   Exceptions	Atm OOO  a+b = 8
+			  |
+		program is running
+		and u get the error
+
+
+		Exception = runtime error 
+
+
+
+
+	your java code (2) uncaught
+		|
+	int div = 100 / 0 ;  --> JVM <-- intangible machine/software
+				  |
+(3)  rethrown			if the deno is 0 then
+				ArithmeticExcpetion e = new ArithmeticExcpetion("/ by zero");
+				throw e; (1)
+			else
+				  | (4) drops it with termination
+			     CPU <-- tangible machinemachine/h/w
+
+
+
+	BEFORE THE BIRTH OF TRY AND CATCH...
+	WORLDWIDE IF AND ELSE IS/WAS USED 
+
+
+psuedocode here
+
+	jungle of if - clarity of the code is lost
+	where the business??? where the error handling logic???
+
+		
+
+	void fundTransfer(source, target, amt) // jungle of if 
+	{
+	     find target
+		if target exist
+		then
+			find source
+			if source exist
+			then
+				check balance of source
+				if source balance > amt
+				then
+					withdraw from source
+					deposit to target
+				else
+					insuff balance at source
+			else
+				source not found
+		else
+			target not found
+	}
+
+	void fundTransfer(source, target, amt)
+	{
+	     find target
+		if target does not exist
+		then
+			target not found
+		else
+			find source
+			if source does not exist
+			then
+				source not found
+			else
+				check balance of source
+				if source balance < amt
+				then
+					insuff balance at source
+				else
+					withdraw from source
+					deposit to target
+			
+	}
+
+
+	void fundTransfer(source, target, amt) // jungle of if 
+	{
+		try
+		{
+ 		 1	find target
+		 2	find source
+		 3	check balance of source
+		 4	withdraw from source
+		 5	deposit to target
+		 6	commit the transaction
+		}
+		catch(if target does not exist)
+		{
+			target not found
+		}
+		catch(if source does not exist)
+		{
+			source not found
+		}
+		catch(if insuff funds at target)
+		{
+			insuff balance at source
+		}
+		
+	}
+			     Object
+				|
+			  Throwable
+				|
+		--------------------------------
+		|			|
+		Error		   Exception
+					|checked (except the RuntimeException)
+		-----------------------------------------------------------------------------------
+		|		|		|		|				|
+	RuntimeException	IOException	SQLException DrivingLicenceException	SourceNotFoundException  TargetNotFoundException
+	|unchecked 
+--------------------------------------------------------------------------------------
+|		     |		|	|   |			|		|
+ArithmeticException  |		|	| RedSignalDishonouredException	FlatTyreException		InsufficientBalanceException
+	NullPointerException	|	|
+				|	|
+		IllegalArgumentException|
+				|	|
+		NumberFormatException	|	
+					|
+		    IndexOutOfBoundsException 
+				|
+	--------------------------------------------
+	|				|
+ ArrayIndexOutOfBoundsException   StringIndexOutOfBoundsException 
+
+
+
+
+
+
+
+	void fundTransfer(s,t,a) throws SourceNotFoundException, TargetNotFoundException
+	{
+
+		if ..
+			throw TargetNotFoundException
+
+		if ...
+			throw SourceNotFoundException
+
+		
+		if ....
+			throw InsufficientBalanceException
+	}
+
+
+
+
+
+
+
+	During a car's journey
+
+		following problems might arise
+	
+	shortDrive			longDrive
+	1-5				1-50
+		RCBookNotFoundException
+		DrivingLicenceNotFoundException*
+		PUCNotFoundException
+		InsuranceCopyNotFoundException
+					InsufficientFuelException
+		TrafficPoliceCaughtException	| Camera	 
+		SpeedLimitException	| Camera
+		
+		RedSignalDishonouredExcpetion*	| Camera	
+		FlatTyreException*
+		EngineFailureException			
+
+					StepneyPuncturedException
+		
+		
+		
+class InvalidOpeningBalanaceException extends Exception
+{
+	InvalidOpeningBalanaceException (String s) { super(s); }
+}
+class InsufficientBalanceException extends RuntimeException
+{
+	InsufficientBalanceException (String s) { super(s); }
+}
+
+class Account
+{
+	acno,name,bal;
+
+	Account	(a,n,b) throws InvalidOpeningBalanaceException 
+	{
+		if(b<5000) {
+			InvalidOpeningBalanaceException e =
+				new InvalidOpeningBalanaceException ("Account opening balance must be more than 5000");
+			throw e;
+		}
+	}
+	void withdraw(float a ) {
+		if(a < bal ) {
+		InsufficientBalanceException e = new 
+			InsufficientBalanceException ("Insuff funds to withdraw");
+			throw e;
+		}
+	}
+}
+class Test
+{
+	main() {
+		try
+		{
+			Account a = new Account(10,"jack",80000);
+			a.withdraw(90000);
+	
+		}
+		catch(InvalidOpeningBalanaceException e) {
+			sop(e);
+		}
+		catch(InsufficientBalanceException  e) {
+
+		}
+		
+	}
+}
+
+
+	try
+	{
+		open file 1
+		open file 2
+			open socket1
+			open socket2 <=== if there is an exception
+				start thread 1
+				start thread 2
+
+					some logic....
+					some logic.
+
+				stop the thread 2		
+				stop the thread 1
+			close socket2
+			close socket1
+		close file2
+		close file1
+	}
+	catch(Socket problem .....) { }
+	finally {
+		smart logic has to be written here to close
+		appropriate resources which are opened ....
+		close file1, close file2, close socket1
+	}
+
+
+Thread - series of instructions 
+==========
+
+101 Suresh 62000 if t1 wins the race, then t1 will keep a bookmark 
+		there, indicating that s/he is busy with this record
+		-dont refer this value until the bookmark is removed
+		(t2  is in queue, awaiting for t1 to complete)
+		and last is t3 awaiting for t2 and t1 to finish
+			
+102 Dinesh 60000
+103 Haresh 70000
+103 Ramesh 80000
+....
+
+		D e p o s i t    C o u n t e r <== One Process 
+
+	Thread1			Thread2			Thread3
+	|			|			|
+	Teller1			Teller2			Teller3
+	|50000			|55000			|62000
+	getBalance(101)		getBalance(101)		getBalance(101)
+	|			|			|
+	calcAmount()		calcAmount()		calcAmount()
+	|55000			|62000			|70000
+	setBalance(101);	setBalance(102);	setBalance(103);		
+	|			|			|
+	Customer1		Customer2		Customer3
+	|			|			|
+at     :10:30am			10:30am			10:30am	
+cash   :5000/-			7000/-			8000/-
+deno.. :500Rs 			100Rs			2000Rs
+count  :10			70			4
+For a/c:101			101			101
+
+
+	how to solve this in non-computerized (manual) banking
+
+	synchronized 
+
+
+
+
+
+How to make a simple thread
+
+		
+				Runnable
+				|run(); //declared				Frame
+				|						| GUI features
+		-----------------------------------------------------------	------
+			|implements 			     implements	|(a)	|extends
+			Thread						|	|	
+			|run(){  }//not doing anything			|	|
+			|start() {  run(); } ---------->JVM Thread	MyMessageFrame
+		---------------------			 Scheduler	  (b)	run() { } //mandate
+		|extends (1)			         RoundRobin 
+	    MyMessage
+		|
+		run() { } //override (2)
+
+	(3) instantiate this MyMessage
+	(4) invoke the start() method of this object, which
+		invokes the run method of MyMessage
+
+
+	I. First Way - EXTENDING THREAD CLASS
+		a. extend from java.lang.Thread class
+		b. override the public void run() method
+			and put your logic which will participate
+			in multithreading		
+		c. create the object of your class of step (a)
+			
+		d. invoke the start() method of this object
+			which invokes the run() method
+
+
+	II. Second Way - IMPLEMENTING RUNNABLE INTERFACE
+		a. implement from java.lang.Runnable interface
+		b. implement the public void run() method
+			and put your logic which will participate
+			in multithreading
+		
+		c. create the object of your class of step (a)
+			it does not have start() method (since it is
+			not the child of java.lang.Thread )
+
+		D. Hence instantiate java.lang.Thread class, and to its
+		constructor pass the object of step (a) because it is 
+		a Runnable object too.
+
+		d. invoke the start() method of this object of step (d)
+			which invokes the run() method
+
+
+
+
+	Priority of Thread
+
+
+		Min 1		Norm 5		Max 10
+		<------------------------------------->
+				|
+				default
+	static	MIN_PRIORITY	NORM_PRIORITY	MAX_PRIORITY
+	final
+
+
+
+Assignment :
+
+	Innovate 3 checked exceptions
+	Innovate 3 unchecked exceptions
+
+	Innovate a thread example via METHOD 1 - Thread way
+	Innovate a thread example via METHOD 2 - Runnable way
+
+
+	I want the GITHUB LINK FROM YOUR SIDE FOR ALL THE 
+	ASSIGNMENTS DONE SO FAR.....
+	
+	
+
+
+
+
+	
 
 
 
