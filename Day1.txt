@@ -966,7 +966,7 @@ Assignment2 : innovate the class hierarchy like Doctor
 		invisible			visible
 		unmanifested			manifested
 
-		frequency 		= frequency 
+		frequency 		=  frequency 
 	Thought + eMotions		=  Action + Result
 	|	    |			= 
 	faster	 feel it +/- tive	    coding + result
@@ -1991,9 +1991,222 @@ Assignment :
 
 	
 
+			Java programs
+				|
+	----------------------------------------------------
+		|		|		|
+		javac		javac		javac
+		|		|		|
+		java		appletviewer	apache tomcat
+		|		|  main()	|main()
+		|		|		|
+		application	applets		servlets
+		|		|		|
+		main()		no main X	no main X
+		|		<----life cycle methods---->
+-------------------------	init()		init()
+|	|	|	|	start()		service()
+CUI	GUI	CUI	GUI	paint()		destroy()
+|	|	|	|	stop()
+Sop	Frame	Sop	Frame	destroy()
+		Thread	Thread
+Socket	Socket	Socket	Socket
+
+Whatsapp
+	|
+	good morning
 
 
 
+
+
+			Object <-- is not a Thread class
+			|
+			|equals/hashcode/toString
+			|finalize/getclass/clone
+			|wait/wait/wait/notify/notifyAll
+	----------------------------------
+	|extends			|
+	|				Component
+	|				|20
+	|				Container
+	|  Runnable			|30
+	|   |run()			Window
+	|   +-------------------+	|20
+	|   |			|	|
+	Thread (60)		|	Frame
+	| 48 + 1 + 11		|	|50
+	|ex   imp  inh		|	JFrame
+	|			|	|30 = 150 + 11 = 161
+	MyMessage		MessageFrame
+	run(){} overriding	run(){}//mandate - implementation
+				MessageFrame mf = new MessageFrame();
+				Thread t = new Thread(mf);
+				t.start();
+
+
+	Thread Synchronization
+	------------------------
+
+		multiple thread would be accessing	
+		the common object, changes made by one
+		thread may not be reflected to the other thread
+
+		Account a = new Account(101,"Julie",50000);
+
+		Teller t1 = new Teller(a);
+		Teller t2 = new Teller(a);
+		Teller t3 = new Teller(a);
+
+		monitor/guarded area
+		|
+		in which your object is placed, ie, a
+		|
+		and in which only one thread is allowed to enter
+
+		t1		t2	t3
+		|		|	|credit from the employer		
+		|		|Emi	|
+		|	========|==================
+		|sms	|	|	|	  |
+		+-------|-getBal|	|  	  |
+			|	|	|	  |
+			|  withdraw()/deposit()	  |
+			===========================
+
+		balance would be un"defined" at any time
+
+
+	Interthread communication
+	-----------------------------
+
+
+		p1.start()		c1.start()
+
+		Producer		Consumer	
+		|			|
+		start()			start()
+		|			|
+		run()			run()
+		|			|
+		produce()		consume()
+	if 	|	  Object	| consume should wait()
+	produce	|	    |		| for the food item to be
+	is over	+------ FoodItem -------+ produced
+	then it should
+	notify() consume
+
+
+	wait/notify must be invoked from a synchronized block
+
+
+
+
+	Generics
+	-------------
+
+	<T> for any type
+
+		Common code across different data type
+
+	MyValues <-- acting as a Container / Holder for 2 values
+
+
+	Below functions are common for any type of values
+	|
+	printMyValues() <-- Iterator
+
+	swapMyValues() <-- swap Algorithm
+
+
+
+
+		Components Orthogonal Space
+		===========================
+
+
+			A. Data Type
+			   | ----> int, float, char, double, String...
+			   | ----> CoconutWater*
+			   + ----> Noodles#
+			  / \ ----> int
+			 /   \ --->FriedRice
+			/     \ -->Fruit Juice
+		       /       \
+	   B. Container----|----Algorithm C.
+		|	   |	    |
+	   MyValues	Iterator   swapMyValues()
+	   Coconut*	   |D	   drinkCoconutWater()*
+	   Bowl#	   |	   eatNoodles();#
+			   |
+		Printer  | Straw*  | ChopSticks#
+			  - printMyValues()
+
+Content					Liquid	Juice	    Rice   PaneerChilly	Noodles	     Pickles
+		|			|	  |	     |	      | 	|		|	
+Container->TeaCup+Saucer | CoffeeMug | Glass | JuiceGlass | Plate | Plate	Bowl	    PickleJar
+					|	  |          |	     |		|		|
+Iterator->		    		straw	straw       spoon   fork      chopstick	    Tweezers/Tongs
+
+	Generic Glass
+		morning - milk
+	the same glass -> after one hour - Tea
+	at 11 - coffee
+
+	after lunch - butter milk in it
+	evening - juice in it
+	night time - medicine / milk ..
+
+
+
+	ArrayList
+	LinkedList
+	TreeSet
+	HashSet
+
+
+	Iterator - help the algorithm to retrieve the content 
+		   from the container
+
+    Straw[Iterator] - help the drinkCoconutWater() [Algorithm]
+		    to retrieve the CoconutWater[DataType/Content]
+		    from the Coconut[Container]
+
+
+
+java.util.*
+
+			    Collection
+			    	|
+		----------------------------------
+		|				|
+		List				Set
+		|duplicates			|unique
+	-----------------		-------------------
+	|		|		|		|
+	ArrayList  LinkedList		TreeSet	   HashSet
+	|		|		|		|
+growable array	  it can grow		
+always at 	  at the beg/end
+the end		  from within
+	
+
+	Container has provided the Iterator
+
+
+	More on collection
+		TreeMap	/HashMap	
+		Calendar / TimeZone
+		
+
+	Reflection
+	Annotation
+	File i/o
+	JDBC
+	
+
+
+	
 
 
 
