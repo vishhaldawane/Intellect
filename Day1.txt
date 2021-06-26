@@ -2194,14 +2194,272 @@ the end		  from within
 	Container has provided the Iterator
 
 
+
+
+100	Book b1 = new Book("Java8",4,500,"JG",800);
+100	Book b2 = new Book("Java8",4,500,"JG",800);
+	     |			|
+	hashcode	  b1.equals(b2)
+	| says diff	     |	|
+	| books		     |	1. b1.bookname.equals(b2.bookname)
+	|                    |  2. b1.edition == b2.edition
+	+--------------------+  3. b1.nop = b2.nop
+		|               4. b1.author.equals(b2.author)
+	add method of HashSet	5. b1.price == b2.price
+
+
+
+
+			Object
+			| equals - does not know what the bookno,author....
+		-------------------
+		|
+		Book - this class knows the bookno,author,nops....
+
+	b1.equals(b2) - thats why override the equals here
+
+
+
+
+
 	More on collection
-		TreeMap	/HashMap	
-		Calendar / TimeZone
+
+			Map <-- key  and value
+			|
+		TreeMap	/ HashMap	
+		|
+	red black tree
+	|	|
+     keys    values
+
+		7|	|	
+		6|	|	
+	VALUE->	5|	|<-- your friend is here in 505 	
+		4|	|	
+		3|	|	
+		2|	|	
+		1|	|	
+		G|	| <-- NameBoard |11		|
+	--------------------------	|22		|
+					|33		|
+					|..		|
+				Key-->	|505 Akash Patil|
 		
+
+		Calendar / TimeZone
+
+
+
+============================
+
+	File handling - java.io
+
+
+
+			
+
+	stdin					stdout
+	|					|
+	Keyboard				Monitor
+	|	reading			writing	|
+	+------->------>Your Java ------>-------+
+		input	Program		output
+			   ||
+		input	   ||
+	+-->------>--------+|----------------------+
+	|+-----<-----<------+--------------------+ |
+	||   output 	   |			| |
+	Hard drive	memory			network	
+	|		 |			|
+directory/file		set of variables	socket/ip+port
+
+
+=====================================================================
+			java i/o
+=====================================================================
+	Byte based stream	||	Character based stream
+ min unit = 1 byte = 256	|| min unit = 1 char = 2 bytes= 65535
+  Stream = byte based	        || reader/writer = character baesd
+=====================================================================
+InputStream    | OutputStream	||  Reader	 |  Writer
+   int	read() |   write(int)	||    int read() |    write(int)
+---------------------------------------------------------------------
+FileInputStream|FileOutputStream|| FileReader    | FileWriter
+---------------------------------------------------------------------
+BufferedInput-			|| BufferedReader|
+Stream				||		 |
+---------------------------------------------------------------------
+				||		 |PrintWriter	 
+---------------------------------------------------------------------
+ObjectInputStream|ObjectOutputS-||
+			tream   ||
+---------------------------------------------------------------------
+
+
+		String str = "AMIT";
+
+	A   B   C  D  E  F  G  H I J K L M N O P Q R S T U V 
+	|   |   |		 |       | | | | | | | |
+	65  66  67 		73       77	       84
+
+		A  M  I  T
+		65 77 73 84
+                |   | |  |
+		|   | |0101 0100
+	  0100 0001 | 0100 1001
+	     0100 1101
+
+		<-- BYTE BASED REPRESENTATION ------->
+	amit = 0100 0001|0100 1101|0100 1001|0101 0100
+		  1         1        1          1
+		<-------------------4 BYTES --------->
+		
+
+		<-- CHARACTER BASED REPRESENTATION ------->
+	amit = 0000 0000 0100 0001|0000 0000 0100 1101| 0000 0000 0100 1001|0000 0000  0101 0100
+		  2                     2                 2                   2
+		<-------------------8 BYTES --------->
+
+
+
+
+
+			DAta Types
+				|
+	--------------------------------------------------
+	|		|		|		|
+	integral	floating	character	boolean
+	|		|		|		|
+	byte  1		float 4		char 2		boolean 1
+	short 2		double 8
+	int   4
+	long  8
+
+	java data type "size is fixed" across all jvms and cpu/os
+
+
+
+	Object Serialization
+	-------------------------
+
+		How to store the state of an object???
+
+		we cannot access data, but via this process
+		we can serialize the private data and store it
+		on the exernal media.
+
+	ObjectInputStream    	ObjectOutputStream 
+
+		
+
+	Interfaces without any method, serves a documentational
+	contract with JVM.
+
+	Serializable - means the private data is written to the 
+			external media, and the client, user, developer
+			are aware of it, they are ok for it.
+
+	
+	Assignment	 - serilize multiple objects
+			   de-serilize multiple objects
+
+
+
+
+
+	byte based streaming
+	|
+	FileInputStream fin  = new FileInputStream ("englishData.txt");
+	BufferedInputStream b1 = new  BufferedInputStream(fin);
+
+
+	character based streaming
+	|
+	FileReader fr  = new FileReader("spanishData.txt");
+	BufferedReader b2 = new  BufferedReader (fr);
+
+
+	JDBC	
+	======
+
+	Java Database Connectivity
+	
+	ApplicationDevelopment		Database
+	|				|
+	Java				Oracle
+	|				|
+	program				data/state/tables
+	logic				|
+	|				|
+	Driver		------------>	data types
+	|				|
+	int/float			number/number(12,2)
+	String				varchar2(20);
+	Date				date
+	Account				account table
+	
+
+
+		Driver can be provided by
+		1. Java (Oracle)
+		2. Database provider (MS-SQl)
+
+
+Following diagram is NOT of inheritance***
+
+
+			Driver
+			|  |
+			|  OracleDriver <-- provided by Oracle Inc.
+			|
+		   Connection 
+			|
+	-----------------------------------------------
+	|		|			|
+	Statement	PreparedStatement	CallableStatement
+	|		|			|
+	select		insert/update/delete	procedure/function
+
+
+
+	Steps to jdbc
+	------------
+	1. decide and load the driver
+		DriverManager.registerDriver()
+
+	2. acquire connection with the db
+		Connection conn = DriverManager.getConnection("dsn","user","password");
+
+	3. make the desired statement
+		Statement st = conn.createStatement("select * from emp");
+
+	4. execute that statement
+		Result rs = st.executeQuery();
+	5. acquire result if any
+		process rs in a loop if required
+
+	6. close the statement/connection
+		rs.close(), st.close(), conn.close()
+
+
+
+
+
+
+
+D:\app\OSIS\product\11.2.0\dbhome_1\NETWORK\ADMIN> tnsnames.ora
+	 |					 
+	mymachine
+	specific
+	username
+
+
+
+	
 
 	Reflection
 	Annotation
-	File i/o
+	
 	JDBC
 	
 
