@@ -2465,6 +2465,37 @@ D:\app\OSIS\product\11.2.0\dbhome_1\NETWORK\ADMIN> tnsnames.ora
 
 
 	
+for hsqldb
+
+Driver   : org.hsqldb.jdbc.JDBCDriver
+URL      : jdbc:hsqldb:hsql://localhost/mydb
+username : SA
+password : 
+
+CREATE TABLE EMP (
+ EMPNO               int,
+ ENAME               VARCHAR(10),
+ JOB                 VARCHAR(9),
+ MGR                 int,
+ HIREDATE            DATE,
+ SAL                 int,
+ COMM                int,
+ DEPTNO              int
+);
+INSERT INTO EMP VALUES (7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL,30);
+INSERT INTO EMP VALUES (7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10);
+INSERT INTO EMP VALUES (7698,'BLAKE','MANAGER',7839,'1981-05-1',2850,NULL,30);
+INSERT INTO EMP VALUES (7782,'CLARK','MANAGER',7839,'1981-06-9',2450,NULL,10);
+INSERT INTO EMP VALUES (7566,'JONES','MANAGER',7839,'1981-04-2',2975,NULL,20);
+INSERT INTO EMP VALUES (7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30);
+INSERT INTO EMP VALUES (7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30);
+INSERT INTO EMP VALUES (7844,'TURNER','SALESMAN',7698,'1981-09-8',1500,0,30);
+INSERT INTO EMP VALUES (7900,'JAMES','CLERK',7698,'1981-12-3',950,NULL,30);
+INSERT INTO EMP VALUES (7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30);
+INSERT INTO EMP VALUES (7902,'FORD','ANALYST',7566,'1981-12-3',3000,NULL,20);
+INSERT INTO EMP VALUES (7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20);
+INSERT INTO EMP VALUES (7788,'SCOTT','ANALYST',7566,'1982-12-09',3000,NULL,20);
+INSERT INTO EMP VALUES (7876,'ADAMS','CLERK',7788,'1983-01-12',1100,NULL,20);
 
 
 
@@ -2473,6 +2504,76 @@ D:\app\OSIS\product\11.2.0\dbhome_1\NETWORK\ADMIN> tnsnames.ora
 
 
 
+
+
+      jdbc:oracle:thin:@localhost:1521:OSE
+				   |    |  
+			 oracle port    db instance
+
+
+
+
+
+STEP1:
+	download hsqldb 2.3.2 from github link provided
+
+STEP2:
+	extract this zip file at a folder, may by below
+
+		d:\mydatabase ( u have to make this folder )
+
+STEPs:
+	1. start a command prompt - cmd
+	2. cd \
+	3  D:
+	4. cd d:\JavaTraining1\hsql db\hsqldb-2.3.2\hsqldb\lib
+	5. start the hsqlbb
+	   java -cp hsqldb.jar org.hsqldb.server.Server --database.0 file:hibernatedb --dbname.0 mydb
+	
+	6. hsqldb service is started	
+
+
+How to see the interactive editor screen of hsql db
+	file explorer->
+		D:\JavaTraining1\hsql db\hsqldb-2.3.2\hsqldb\lib
+
+		1.double click on hsqldb.jar file to see a GUI screen
+		2. type : hsql database engine server
+		3. URL : jdbc:hsqldb:hsql://localhost/mydb
+		4. create table emp
+		5. insert records
+
+CREATE TABLE EMP (
+ EMPNO               int,
+ ENAME               VARCHAR(10),
+ JOB                 VARCHAR(9),
+ MGR                 int,
+ HIREDATE            DATE,
+ SAL                 int,
+ COMM                int,
+ DEPTNO              int
+);
+INSERT INTO EMP VALUES (7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL,30);
+INSERT INTO EMP VALUES (7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10);
+INSERT INTO EMP VALUES (7698,'BLAKE','MANAGER',7839,'1981-05-1',2850,NULL,30);
+INSERT INTO EMP VALUES (7782,'CLARK','MANAGER',7839,'1981-06-9',2450,NULL,10);
+INSERT INTO EMP VALUES (7566,'JONES','MANAGER',7839,'1981-04-2',2975,NULL,20);
+INSERT INTO EMP VALUES (7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30);
+INSERT INTO EMP VALUES (7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30);
+INSERT INTO EMP VALUES (7844,'TURNER','SALESMAN',7698,'1981-09-8',1500,0,30);
+INSERT INTO EMP VALUES (7900,'JAMES','CLERK',7698,'1981-12-3',950,NULL,30);
+INSERT INTO EMP VALUES (7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30);
+INSERT INTO EMP VALUES (7902,'FORD','ANALYST',7566,'1981-12-3',3000,NULL,20);
+INSERT INTO EMP VALUES (7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20);
+INSERT INTO EMP VALUES (7788,'SCOTT','ANALYST',7566,'1982-12-09',3000,NULL,20);
+INSERT INTO EMP VALUES (7876,'ADAMS','CLERK',7788,'1983-01-12',1100,NULL,20);
+
+
+
+
+
+
+	
 
 
 
