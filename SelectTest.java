@@ -10,14 +10,19 @@ public class SelectTest {
 		
 		try {
 			//1 load the driver...
+			//1 load the driver...
 			System.out.println("Trying to load the driver ...");
 			DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+			//DriverManager.registerDriver(new org.hsqldb.jdbc.JDBCDriver());
+			
 			System.out.println("Driver loaded...");
 
 			//2
 			System.out.println("Trying to connect to the database...");
+			
 												//url							username	password
 			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:OSE", "system", "manager");
+			//Connection conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/mydb", "SA", "");
 			System.out.println("Connected to the database..."+conn);
 
 			System.out.println("For which job ? ");
