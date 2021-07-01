@@ -646,17 +646,357 @@ Session Tracking ->
 	Assignment
 	-----------------
 	convert your own servlet jdbc into DAO pattern
+
+
+
+
+
+
+	Servlet =   { Java code <htmlcode> is imprisoned  }
+
+	GreetServlet.java (1)
+	--------------------
+	import .... (2)
+
+	GreetServlet extends (3) HttpServlet implements ....(4)
+	{
+		init() { }
+		destroy() { }
+
+		(5)
+		void service(. (6) . (7) ) (8)throws ServletException,IOException <-- server side coding
+		{
+		  PrintWriter pw ... (9)
+
+		(10)
+		  for(int i=1;i<6;i++)
+			  pw.println( "<h"+i+"> value is " + "</h"+i+">");
+					|			|
+					view			view
+	        }
+	}
+
+	JSP Engine
+	|	
+	JSP = Java Server Pages
+
+	abc.jsp <-- will code the page as if it is HTML coding
+	-----------
+		<h1> hello </h1>
+	|
+	convert this abc.jsp 
+			|
+		     abc_jsp.java <-- oh!!! A java file is created
+			|		from .jsp file
+			|		(basicaly its a servlet)
+		     abc_jsp.class <-- wow, its compiled also
+
+	abc_jsp.java.java (1)
+	--------------------
+	import .... (2)
+	abc_jsp extends (3) HttpServlet implements ....(4)
+	{
+		(5)
+		void service(. (6) . (7) ) (8)throws ServletException,IOException <-- server side coding
+		{
+		  PrintWriter out ... (9)
+			  out.println( "<h1> hello </h1>");
+					|			
+					view			
+	        }
+	}
+				server
+				|
+		--------------------------
+		|			|	
+		abc.html		abc.jsp - never travels
+		|			it runs only on the server
+		|			like a servlet, and output of
+		|			that (dynamic html) travels
+		|			to the customer
+		|
+	---------------
+	|abc.html (runs here)
+	Client
+
+
+
+
+
+	<% java code %> <-- scriptlet tag
+
+	<%=i%>	-- fetch value of the variable
+
+	<%@ page import="login.dao.LoginDAOImpl"  %> -- import package
+
+
+
+	abc.jsp <-- will code the page as if it is HTML coding
+	-----------
+	by default the entire jsp page code 
+	is the code of the service method
+
+		<%for(int i=1;i<=6;i++) { %> <-- its a java code
+
+			<h<%=i%>> hello </h<%=i%>> <-- html code
+
+		<%}%>
+
+	abc.jsp -> abc_jsp.java -> abc_jsp.class
 	
 
 
 
+	Greet.jsp --> Greet_jsp.java -> Greet_jsp.class
+		transpiled	compiled
+
+
+
+	JSP						Servlet
+ =====================					==========
+1 application = pageContext.getServletContext();	ctx, ctx1
+2 config = pageContext.getServletConfig();		cfg, cfg1
+3 session = pageContext.getSession();			cart,mybag
+4 out = pageContext.getOut();				pw, mypw, myout
+5 Object page 						Object o, o1, o2
+6 ServletRequest request				arg0, req
+7 ServletResponse response				arg1, resp
+8 PageContext pageContext;				pc, pgCtx
+9 Exception exception					ex,ex1, e
+
+Predefined /implicit objects of JSP
+-----------------------------------------
+1. request
+2. response
+3. out
+4. exception
+5. session
+6. config
+7. context
+8. page
+9. pageContext
+
+
+
+
+
+	try
+	{
+	}
+	catch(Exception exception)
+	{
+	}
+
+
+
+Custom class is created by the JSP writers
+=================================================
+class useBean
+{
+	String id;
+	String class;
+		setter/getter for id and class
+}
+useBean ub  = new useBean();
+ub.setId("log");
+ub.setClass("login.dao.Login");
+---------------------------------------------
+
+class SetProperty
+{
+	String property;
+	String name;
+	set/get
+}
+SetProperty sp = new  SetProperty ();
+sp.setProperty("username");
+sp.setName("log");
+String u = "vishhal";
+sp.setValue(u);
+
+	To create the object of a pojo ( Bean )
+	|
+	<jsp:useBean id="log" class="login.dao.Login"/> <== for You as a JSP writer
+		Login log = new Login();
+
+	To invoke the setter method of the bean / pojo
+	|
+	|	setter method name
+	|		|
+<jsp:setProperty property="username" name="log" value="<%=u%>"/>
+      |				|			  |
+      |            +------------+			  |
+      +------+     |    +---------------------------------+
+	     | <---+--> |
+	log.setUsername(u);
+	    |||
+	 no need to mention the "set" word 
+
+
+
+	<jsp:getProperty> is used to invoke the getter method
 
 	
 
 
+	<jsp:setProperty property="*" name="log"/>
 
 
 
 
-
+	register.html
+	|
+	username varchar2(20) primary key,
+	password varchar2(20),
+	firstname varchar2(20),
+	address varchar2(20),
+	qualification varchar2(20),
+	city varchar2(20),
+	pin varchar2(10),
+	state varchar2(20)
 	
+
+<% 
+	 	String u = request.getParameter("uname"); /* read from html */
+	 	String p = request.getParameter("upass");
+	 	String fname = request.getParameter("fname");
+	 	String address = request.getParameter("address");
+	 	String qual = request.getParameter("qual");
+	 	String city = request.getParameter("city");
+	 	String pin = request.getParameter("pin");
+	 	String state = request.getParameter("state");
+	 	
+	 %>
+
+
+
+	JSTL
+
+	JSP Standard Tag Library
+
+
+
+
+
+
+
+
+
+==========================================================
+
+
+	core tags
+	format tags   1999-01-21
+	jdbc tags
+
+		<c: out>
+
+		<c:if>
+		<c:catch>
+
+		<jdbc:dataSource url="" driver="" query="select * from emp">
+		
+		<c:out value="${emp.ename}"> 
+		
+
+
+
+
+
+---------------------------------------------
+
+	Reflection = 
+		
+
+		every instance on an "Object class"
+		got a method called getClass() that 
+		returns an instance of class "Class"
+
+
+
+
+
+
+	Annotation = extended version of "comments"
+
+
+	Comments = are only specific to the source code
+	Comments = are non executable
+	Comments = unstructured ( can be given anywhere )
+
+	Annotation = are available to the source/class code
+	Annotation = executable - serve some purpose
+	Annotation = structured ( can be given at field/class/method
+		arguments/return /constructor type)
+
+
+			
+			Annotations
+				|
+		-----------------------------------
+		|			|
+		only to source		also to class file
+
+
+	Marriage Dinner party 
+
+	Food counters are there.....
+
+	Counter1		Counter2		Counter3
+	|			|			|
+	Veg			Non-Veg			Ice-cream
+container1 [ sambar ]	container1 [ chicken curry ]	container [ vanilla
+container2 [ puri ]	container2 [ mutton curry ]	
+container3 [ idli ]
+container4 [ .... ]
+container5 [ .... ]
+
+	Counter4	Counter5
+	|		|
+	Chinese		Snacks
+	
+
+
+		Some jars in the kitchen are annotated
+
+
+	Jar1	Jar2		Jar3	Jar4	Jar4
+	|	|		|	|	|
+	SALT	SUGARPOWDER  CORNFL	WHEATFL SOBI <-- WHITE
+
+
+
+
+
+
+
+	@DevelopedBy
+	class Flight
+	{
+	
+		@ImpKey
+		int flightNumber;
+
+		@Version(value=1.0)
+		void fly() 
+		{
+		}
+	
+	}
+
+		Flight f = new Flight(101,"Jet");
+		
+
+		hand over this f to tomcat
+
+
+
+
+
+
+
+
+
+
+
+
